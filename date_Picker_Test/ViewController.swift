@@ -11,10 +11,13 @@ import UIKit
 class ViewController: UIViewController {
       @IBOutlet weak var picker: UIDatePicker!
       @IBOutlet weak var label: UILabel!
+      @IBOutlet weak var NT: UILabel!
+      var myTimer = Timer()
       
       override func viewDidLoad() {
             super.viewDidLoad()
             // Do any additional setup after loading the view, typically from a nib.
+            myTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
       }
 
       @IBAction func picker(_ sender: Any) {
@@ -24,6 +27,12 @@ class ViewController: UIViewController {
             formatter.dateFormat = "yyyy-MM-dd HH:mm:ss a EE"
             label.text = formatter.string(from: picker.date)
             
+      }
+      @objc func updateTime() {
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm:ss EEE"
+            NT.text = formatter.string(from: date)
       }
       
 }
