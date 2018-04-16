@@ -19,15 +19,12 @@ class ViewController: UIViewController {
             // Do any additional setup after loading the view, typically from a nib.
             myTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
       }
-      @IBAction func bt(_ sender: Any) {
-            view.backgroundColor = UIColor.white
-      }
       
       @IBAction func picker(_ sender: Any) {
             print("change Date Picker")
             
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss a EEEE"
+            formatter.dateFormat = "YYYY/MM/dd HH:mm:ss a EEEE"
             label.text = formatter.string(from: picker.date)
             
       }
@@ -38,10 +35,22 @@ class ViewController: UIViewController {
             NT.text = formatter.string(from: date)
             
             if(NT.text == label.text){
-                  view.backgroundColor = UIColor.yellow
+                  let myAlert = UIAlertController(title: "알림", message: "설정된 시간입니다!", preferredStyle: .actionSheet)
+                  let okAction = UIAlertAction(title: "종료", style: .default, handler: {(action:UIAlertAction) -> Void in
+                        self.view.backgroundColor = UIColor.yellow
+                  })
+                  
+                  let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: {(action:UIAlertAction) -> Void in
+                        self.view.backgroundColor = UIColor.green
+                        
+                  })
+                  myAlert.addAction(okAction)
+                  myAlert.addAction(cancelAction)
+                  
+                  present(myAlert, animated: true, completion: nil)
             }
-            
-      }
+       
       
-}
+      }
   
+}
