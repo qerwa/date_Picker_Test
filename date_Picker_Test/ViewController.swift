@@ -35,7 +35,7 @@ class ViewController: UIViewController {
             NT.text = formatter.string(from: date)
             
             if(NT.text == label.text){
-                  let myAlert = UIAlertController(title: "알림", message: "설정된 시간입니다!", preferredStyle: .actionSheet)
+                  let myAlert = UIAlertController(title: "알림", message: "설정된 시간입니다!", preferredStyle: .alert)
                   let okAction = UIAlertAction(title: "종료", style: .default, handler: {(action:UIAlertAction) -> Void in
                         self.view.backgroundColor = UIColor.yellow
                   })
