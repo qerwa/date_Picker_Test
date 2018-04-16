@@ -41,7 +41,7 @@ class ViewController: UIViewController {
                   })
                   
                   let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: {(action:UIAlertAction) -> Void in
-                        self.view.backgroundColor = UIColor.green
+                        self.view.backgroundColor = UIColor.white
                         
                   })
                   myAlert.addAction(okAction)
